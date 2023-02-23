@@ -23,7 +23,7 @@ return(
         <div className='body'>
           <p style={{color:"#FF0800"}}>The perfect marketplace for all automotive accessories</p>
 
-          <div style={{marginTop:"50px"}}><Button variant="contained" color='error' size='large' onClick={()=>{login(true);}}>EXPLORE</Button></div>
+          <div style={{marginTop:"50px"}}><Button variant="contained" color='error' size='large' onClick={()=>{login(true);}} >EXPLORE</Button></div>
         </div>
         </div>
     
