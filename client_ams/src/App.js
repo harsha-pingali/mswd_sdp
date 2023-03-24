@@ -5,12 +5,15 @@ import Signup from './components/Signup.js';
 import './App.css';
 import { Container} from '@mui/material';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import ResponsiveAppBar from './components/Navigation.js';
 import Home from './components/Home.js';
 function App() {
   return (
    <div className='App'>
+    <ResponsiveAppBar />
     <BrowserRouter>
       <Routes>
+        
         <Route path='/' element={<Landingpage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
