@@ -19,6 +19,8 @@ import '../index.css';
 import audi from './static_content/Audi.jpg';
 import benz from './static_content/benzlogo.jpg';
 import bmw from  './static_content/bmwlogo.jpg';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 //import logo from './static_content/Audi.jpg';
 function Copyright() {
   return (
@@ -52,10 +54,25 @@ const accessories=[
 
 
 export default function Home() {
+  const navigate=useNavigate();
+   useEffect(() => {
+    const handleBackButton = (event) => {
+      event.preventDefault();
+      navigate('/home'); // replace this with your desired destination
+    };
+
+    window.history.pushState(null, '', window.location.pathname);
+    window.addEventListener('popstate', handleBackButton);
+
+    return () => {
+      window.removeEventListener('popstate', handleBackButton);
+    };
+  }, [navigate]);
+
   return (
     <div>
       <CssBaseline />
-
+        {console.log(localStorage.getItem("token"))}
       <main>
         {/* Hero unit */}
         <Box

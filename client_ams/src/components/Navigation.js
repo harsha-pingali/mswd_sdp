@@ -14,12 +14,16 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@mui/material';
 import { Theme } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 const pages = ['home', 'login', 'signup'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
 
+
+
 function ResponsiveAppBar(props) {
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,7 +41,7 @@ function ResponsiveAppBar(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -163,7 +167,7 @@ function ResponsiveAppBar(props) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

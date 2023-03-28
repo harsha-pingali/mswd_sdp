@@ -17,6 +17,8 @@ import { Navigate } from 'react-router-dom';
 import { useState} from 'react';
 import Home from './Home';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Copyright(props) {
   return (
@@ -31,34 +33,64 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
-  
+  const  [status,setStatus]=useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const[result,setResult]= useState(null);
   const[user_id,setUserid]=useState(null);
-  
+   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    //event.preventDefault();
-    console.log(email)
-    alert(email)
-    //const data = new FormData (event.currentTarget);
+  useEffect(() => {
+    const handleBackButton = (event) => {
+      event.preventDefault();
+      navigate('/home'); // replace this with your desired destination
+    };
 
-     axios.get('http://localhost:6061/authenticate',{params:{
-      un: email,
-      pw: password
-    }}
-    )
-      .then(response => {
-        const isAuthenticated = response.data;
-        alert(response.data);
-        if (isAuthenticated==="pass") {
-            // Navigate to home page if authenticated
-        } else {
-          alert('Invalid email or password');
-        }
-      })
+    window.history.pushState(null, '', window.location.pathname);
+    window.addEventListener('popstate', handleBackButton);
+
+    return () => {
+      window.removeEventListener('popstate', handleBackButton);
+    };
+  }, [navigate]);
+
+ 	async function handleSubmit(event) {
+		event.preventDefault();
+    alert(email);
+
+		const response = await fetch('http://localhost:6061/authenticate', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email,
+				password,
+			}),
+		})
+
+		const data = await response.json()
+    console.log(data)
+    console.log(data.user)
+		if (data.user) {
+			localStorage.setItem('token', data.user)
+			alert('Login successful')
+       alert(data.user.name)
+			//window.location.href = '/home'
+      //window.history.pushState(null,null,'/home')
+     
+      //window.history.forward();
+      //window.location.href='/home'
+       navigate('/home');
+      
+		} 
+    else {
+			alert('Please check your username and password');
     }
+    }
+	
+
+
     /*function handleSubmit(Event){
     alert("form submitted");
     Event.preventDefault();
@@ -75,7 +107,7 @@ export default function SignInSide() {
       console.log(result)//setResult renders the page first and then it assigns the value
     })
     console.log(passwd);}*/
-
+if(status==false){
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -142,7 +174,7 @@ export default function SignInSide() {
               <Button
                 type="submit"
                 fullWidth
-                href='/home'
+                href=''
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 style={{borderRadius:"20px",backgroundColor:"black",width:"250px"}}
@@ -173,5 +205,9 @@ export default function SignInSide() {
         </Grid>
       </Grid>
     </ThemeProvider>
-  );
+  );}
+
+  else{
+    return <Navigate to='/home/' />
+  }
 }

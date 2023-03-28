@@ -10,6 +10,8 @@ const client=new MongoClient(uri);
 client.connect();
 const db=client.db("sdp");
 const collect=db.collection("collect1");
+const jwt =require('jsonwebtoken');
+const bcrypt=require('bcryptjs');
 //collect.insertOne({name:"harsha"})
 
 app.listen( 6061 ,console.log("started at port 6061"));//port connection
@@ -49,7 +51,7 @@ app.post('/reg',(request,response)=>{
 })*/
 
 
-app.get('/authenticate',(request,response)=>{
+/*app.post('/authenticate',(request,response)=>{
     console.log(request.query)
     async function find(){
         try{
@@ -73,4 +75,37 @@ app.get('/authenticate',(request,response)=>{
         }
     }
    find().catch(console.dir)
+})*/
+
+app.post('/authenticate', async (req, res) => {
+    console.log(req.body.email)
+	const user = await collect.findOne({
+		email: req.body.email,
+        password:req.body.password
+	})
+    //console.log(user.password,req.body.password)
+
+	if (user==null) {
+		res.send({status:"fail"})
+	}
+
+	/*const isPasswordValid = await bcrypt.compare(
+		req.body.password,
+		user.password
+	)*/
+    else{
+	if (user.password=req.body.password) {
+		const token = jwt.sign(
+			{
+				name: user.name,
+				email: user.email,
+			},
+			'secret123'
+		)
+
+		return res.json({ status: 'ok', user: token })
+	} 
+    else {
+		return res.json({ status: 'error', user: false })
+	}}
 })
