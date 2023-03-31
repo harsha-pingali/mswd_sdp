@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@mui/material';
 import { Theme } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 const pages = ['home', 'login', 'signup'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -22,7 +22,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
 
-function ResponsiveAppBar(props) {
+function ResponsiveAppBar() {
   
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -39,8 +39,19 @@ function ResponsiveAppBar(props) {
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+     setAnchorElNav(null);
+
   };
+  function handleSettings(event){
+     const setting=event.currentTarget.innerText;
+     //const setting=document.getElementById("set").textContent;
+     alert(setting)
+     if(setting=="Logout"){
+      localStorage.removeItem("token")
+      window.location.href='/login'
+     }
+
+  }
   
   return (
     <AppBar position="static">
@@ -101,7 +112,7 @@ function ResponsiveAppBar(props) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={handleCloseNavMenu} data-arg1={page}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -133,6 +144,7 @@ function ResponsiveAppBar(props) {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                data-arg1={page}
               >
                 {page}
               </Button>
@@ -142,7 +154,7 @@ function ResponsiveAppBar(props) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={localStorage.getItem('user')} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -168,7 +180,7 @@ function ResponsiveAppBar(props) {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center" onClick={handleSettings} id="set">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>

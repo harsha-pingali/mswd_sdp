@@ -74,8 +74,10 @@ export default function SignInSide() {
     console.log(data.user)
 		if (data.user) {
 			localStorage.setItem('token', data.user)
+      localStorage.setItem('user',"harsha")
+      console.log(localStorage.getItem('user'))
 			alert('Login successful')
-       alert(data.user.name)
+      alert(data.user.name)
 			//window.location.href = '/home'
       //window.history.pushState(null,null,'/home')
      

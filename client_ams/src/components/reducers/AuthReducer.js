@@ -16,3 +16,4 @@ function AuthReducer(state = initState, action) {
     }
 
 }
+export default AuthenticationReducer

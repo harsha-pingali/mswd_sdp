@@ -36,7 +36,7 @@ function Copyright() {
 }
 
 const brands = [
-  { heading: 'Audi', description: 'Description for Audi' ,logo:audi},
+  { heading: 'Audi', description: 'Description for Audi' ,logo:"https://asset.cloudinary.com/dpkdi73b4/9162c8a3fce385650654907b8a1819bd"},
   { heading: 'Mercedes-Benz', description: 'Description for Mercedes-Benz',logo:benz },
   { heading: 'Bugati', description: 'Description for Bugati',logo:audi},
   { heading: 'Morris Garages', description: 'Description for Morris Garages',logo:audi },

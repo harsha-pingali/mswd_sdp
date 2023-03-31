@@ -7,9 +7,12 @@ import { Container} from '@mui/material';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import ResponsiveAppBar from './components/Navigation.js';
 import Home from './components/Home.js';
+import PrivateRoutes from './components/utils/PrivateRoutes.js';
+
 function App() {
   return (
    <div className='App'>
+    
     <ResponsiveAppBar />
     <BrowserRouter>
       <Routes>
@@ -17,7 +20,9 @@ function App() {
         <Route path='/' element={<Landingpage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route element={<PrivateRoutes/>}>
         <Route path='/home'   element={<Home/>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
     
