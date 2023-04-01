@@ -67,7 +67,7 @@ app.post('/reg',(request,response)=>{
                 }
                 else{
                     response.send("fail")
-                }
+                } 
             }
         }
         finally{
@@ -108,4 +108,11 @@ app.post('/authenticate', async (req, res) => {
     else {
 		return res.json({ status: 'error', user: false })
 	}}
+})
+
+app.post('/user', async (req, res) => {
+console.log(req.body)
+  const users = await collect.find().toArray()
+  console.log(users)
+  res.send(users)
 })

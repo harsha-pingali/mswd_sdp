@@ -18,7 +18,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../index.css';
 import audi from './static_content/Audi.jpg';
 import benz from './static_content/benzlogo.jpg';
-import bmw from  './static_content/bmwlogo.jpg';
+import exhaust from './static_content/exhaust.jpg';
+import clutch from './static_content/clutch.jpg';
+import radiator from './static_content/radiator.jpg'
+import suspension from './static_content/suspension.jpg'
+import carburetor from './static_content/carburetor.jpg'
+import bugati from './static_content/bugati.jpg'
+import volvo from './static_content/volvo.jpg'
+import mg from './static_content/mg.jpg'
+import bmw from './static_content/bmw.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 //import logo from './static_content/Audi.jpg';
@@ -36,20 +44,20 @@ function Copyright() {
 }
 
 const brands = [
-  { heading: 'Audi', description: 'Description for Audi' ,logo:"https://asset.cloudinary.com/dpkdi73b4/9162c8a3fce385650654907b8a1819bd"},
-  { heading: 'Mercedes-Benz', description: 'Description for Mercedes-Benz',logo:benz },
-  { heading: 'Bugati', description: 'Description for Bugati',logo:audi},
-  { heading: 'Morris Garages', description: 'Description for Morris Garages',logo:audi },
-  { heading: 'BMW', description: 'Description for BMW',logo:bmw },
-  { heading: 'Volvo', description: 'Description for Volvo',logo:audi },
+  { heading: 'Audi', description: 'Checkout most frequently ordered parts of Audi' ,logo:audi},
+  { heading: 'Mercedes-Benz', description: 'Checkout most frequently ordered parts of Mercedes-Benz',logo:benz },
+  { heading: 'Bugati', description: 'Checkout most frequently ordered parts of Bugati',logo:bugati},
+  { heading: 'Morris Garages', description: 'Checkout most frequently ordered parts of Morris Garages',logo:mg },
+  { heading: 'BMW', description: 'Checkout most frequently ordered parts of BMW',logo:bmw },
+  { heading: 'Volvo', description: 'Checkout most frequently ordered parts of Volvo',logo:volvo },
 ];
 const accessories=[
-  {heading:"Exhaust"},
-  {heading:"Amplifier"},
-  {heading:"Clutch Kit"},
-  {heading:"Air Filters"},
-  {heading:"wind Shield"},
-  {heading:"Break System"}
+  {heading:"Exhaust",logo:exhaust},
+  {heading:"Clutch Kit",logo:clutch},
+  {heading:"Radiator",logo:radiator},
+  {heading:"Suspension",logo:suspension},
+  {heading:"Carburetor",logo:carburetor},
+  {heading:"Break System",logo:exhaust}
 ]
 
 
@@ -93,9 +101,7 @@ export default function Home() {
               POPULAR BRANDS
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+              
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -132,7 +138,7 @@ export default function Home() {
                   </CardContent>
                   <CardActions>
                     <Button size="small" variant='contained'>View</Button>
-                    <Button size="small">Edit</Button>
+                    
                   </CardActions>
                 </Card>
               </Grid>
@@ -156,7 +162,7 @@ export default function Home() {
                   <CardMedia
                     component="img"
                     
-                    //image={logo}
+                    image={item.logo}
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>

@@ -15,9 +15,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {styled} from '@mui/material/styles';
 import axios from 'axios';
 import '../index.css';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Login from'./Login.js';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -54,6 +55,7 @@ const CssTextField=styled(TextField)({
 
 
 export default function SignUp() {
+  const navigate=useNavigate();
   const[resp,setResponse]=useState(null)
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -190,5 +192,5 @@ if(resp==null){
     </div>
   );}
   else
-          return <Login/>
+          navigate('/login')
 }

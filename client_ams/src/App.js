@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import ResponsiveAppBar from './components/Navigation.js';
 import Home from './components/Home.js';
 import PrivateRoutes from './components/utils/PrivateRoutes.js';
+import Admin from './components/Admin.js';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route element={<PrivateRoutes/>}>
         <Route path='/home'   element={<Home/>}/>
+        <Route path='/admin'  element={<Admin/>} />
         </Route>
       </Routes>
     </BrowserRouter>

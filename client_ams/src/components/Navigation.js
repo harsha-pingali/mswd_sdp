@@ -38,16 +38,19 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (event) => {
      setAnchorElNav(null);
+      
 
   };
   function handleSettings(event){
+    setAnchorElNav(null);
      const setting=event.currentTarget.innerText;
      //const setting=document.getElementById("set").textContent;
      alert(setting)
      if(setting=="Logout"){
       localStorage.removeItem("token")
+      localStorage.removeItem("user")
       window.location.href='/login'
      }
 
@@ -112,7 +115,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} data-arg1={page}>
+                <MenuItem key={page} id="nav" onClick={handleCloseNavMenu} data-arg1={page}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -145,6 +148,7 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 data-arg1={page}
+                id="nav"
               >
                 {page}
               </Button>

@@ -74,16 +74,21 @@ export default function SignInSide() {
     console.log(data.user)
 		if (data.user) {
 			localStorage.setItem('token', data.user)
-      localStorage.setItem('user',"harsha")
+      localStorage.setItem('user',email)
       console.log(localStorage.getItem('user'))
 			alert('Login successful')
-      alert(data.user.name)
+      //alert(data.user.name)
 			//window.location.href = '/home'
       //window.history.pushState(null,null,'/home')
      
       //window.history.forward();
       //window.location.href='/home'
-       navigate('/home');
+
+       
+       if(email=='2100031411@kluniversity.in')
+          navigate('/admin');
+       else
+        navigate('/home');
       
 		} 
     else {
@@ -121,8 +126,9 @@ if(status==false){
           md={7}
           lg={6}
           sx={{
-            backgroundImage: 'url(https://th.bing.com/th/id/OIP.hgnNmYGwc4pOmKRdc9t2IQHaFj?pid=ImgDet&w=1920&h=1440&rs=1)',
+            backgroundImage: 'url(https://res.cloudinary.com/dpkdi73b4/image/upload/v1680325311/loginimg_wxclrl.jpg)',
             backgroundRepeat: 'no-repeat',
+            width:'250px',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
