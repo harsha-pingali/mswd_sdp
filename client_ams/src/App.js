@@ -9,6 +9,13 @@ import ResponsiveAppBar from './components/Navigation.js';
 import Home from './components/Home.js';
 import PrivateRoutes from './components/utils/PrivateRoutes.js';
 import Admin from './components/Admin.js';
+import AudiProducts from './components/AudiProducts.js';
+import Benz from './components/BenzProducts.js';
+import Bugati from './components/Bugati.js';
+import MG from './components/MG.js';
+import Bmw from './components/Bmw.js';
+import Volvo from './components/Volvo.js';
+import Cart from './components/Carts.js';
 
 function App() {
   return (
@@ -24,6 +31,13 @@ function App() {
         <Route element={<PrivateRoutes/>}>
         <Route path='/home'   element={<Home/>}/>
         <Route path='/admin'  element={<Admin/>} />
+        <Route path='/products/Audi' element={<AudiProducts/>} />
+        <Route path='/products/Mercedes-Benz' element={<Benz/>}/>
+        <Route path='/products/Bugati'  element={<Bugati/>}/>
+        <Route path='/products/products/MG'  element={<MG/>}/>
+        <Route path='products/BMW'  element={<Bmw/>}/>
+        <Route path='/products/Volvo'  element={<Volvo/>}/>
+        <Route path='/cart' element={<Cart/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

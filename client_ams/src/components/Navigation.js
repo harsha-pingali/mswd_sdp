@@ -15,8 +15,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@mui/material';
 import { Theme } from '@mui/material';
 import { Navigate, useNavigate } from 'react-router-dom';
+import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 const pages = ['home', 'login', 'signup'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile',  'Logout'];
 
 
 
@@ -121,7 +122,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          
+           
           <Typography
             variant="h5"
             noWrap
@@ -149,11 +150,20 @@ function ResponsiveAppBar() {
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 data-arg1={page}
                 id="nav"
+                href={"/"+page.toString()}
               >
                 {page}
               </Button>
             ))}
           </Box>
+          <Box sx={{ flexGrow: 0 }}>
+  <Tooltip title="Open cart">
+    <IconButton  style={{marginRight:"20px "}} href='/cart'>
+      <ShoppingCartSharpIcon/>
+    </IconButton>
+  </Tooltip>
+  {/* Add your cart menu code here */}
+</Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -189,6 +199,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
+          
         </Toolbar>
       </Container>
     </AppBar>

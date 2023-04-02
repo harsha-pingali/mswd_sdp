@@ -128,7 +128,7 @@ if(status==false){
           sx={{
             backgroundImage: 'url(https://res.cloudinary.com/dpkdi73b4/image/upload/v1680325311/loginimg_wxclrl.jpg)',
             backgroundRepeat: 'no-repeat',
-            width:'250px',
+            
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',

@@ -10,13 +10,21 @@ import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 
-function handleDelete(){
 
-}
 function Admin() {
   const[users,setUsers]=useState([])
 
-  
+  async function deleteUser(id){
+    alert("deleting user")
+     try {
+      const response = await axios.post('http://localhost:6061/deleteuser/',{id:id});
+      console.log(response.data);
+      // If the deletion is successful, update the users state to remove the deleted user
+      setUsers(users.filter(user => user.id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  }
     async function fetchData() {
       try {
         const response = await axios.post('http://localhost:6061/user', {name: 'harsha'});
@@ -73,7 +81,7 @@ function Admin() {
       <TableCell>{user.email}</TableCell>
       <TableCell>{user.mobile}</TableCell>
       <TableCell>
-        <Button variant='contained' color='error' onClick={handleDelete}>Delete User <DeleteIcon/></Button>
+        <Button variant='contained' color='error' onClick={() => deleteUser(user.id)}>Delete User <DeleteIcon/></Button>
       </TableCell>
     </TableRow>
   );

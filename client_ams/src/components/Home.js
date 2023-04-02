@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../index.css';
 import audi from './static_content/Audi.jpg';
@@ -29,13 +29,16 @@ import mg from './static_content/mg.jpg'
 import bmw from './static_content/bmw.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../App.css'
+
 //import logo from './static_content/Audi.jpg';
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      
+      <Link color="inherit" href="/">
+        SCN Automotives
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -43,11 +46,13 @@ function Copyright() {
   );
 }
 
+
+
 const brands = [
   { heading: 'Audi', description: 'Checkout most frequently ordered parts of Audi' ,logo:audi},
   { heading: 'Mercedes-Benz', description: 'Checkout most frequently ordered parts of Mercedes-Benz',logo:benz },
   { heading: 'Bugati', description: 'Checkout most frequently ordered parts of Bugati',logo:bugati},
-  { heading: 'Morris Garages', description: 'Checkout most frequently ordered parts of Morris Garages',logo:mg },
+  { heading: 'MG', description: 'Checkout most frequently ordered parts of Morris Garages',logo:mg },
   { heading: 'BMW', description: 'Checkout most frequently ordered parts of BMW',logo:bmw },
   { heading: 'Volvo', description: 'Checkout most frequently ordered parts of Volvo',logo:volvo },
 ];
@@ -77,8 +82,9 @@ export default function Home() {
     };
   }, [navigate]);
 
+
   return (
-    <div>
+    <div >
       <CssBaseline />
         {console.log(localStorage.getItem("token"))}
       <main>
@@ -92,11 +98,12 @@ export default function Home() {
         >
           <Container maxWidth="sm">
             <Typography
-              component="h1"
-              variant="h2"
+             
+              variant="h3"
               align="center"
               color="text.primary"
               gutterBottom
+              style={{"fontFamily":"Noto Sans"}}
             >
               POPULAR BRANDS
             </Typography>
@@ -116,11 +123,12 @@ export default function Home() {
         </Box>
         <Container  sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
-            {brands.map((item) => (
+          <Grid container spacing={4} style={{"borderRadius":"10px"}}>
+            {brands.map((item,index) => (
               <Grid item key={item} xs={12} sm={6} md={4} style={{marginBottom:"35px"}}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                {/*<Card
+                  sx={{ height: '100%', display: 'flex', flexDirection: 'column', boxShadow: '0px 2px 10px rgba(0, 0, 0, 3)' }}
+                   className="card-container"
                 >
                   <CardMedia
                     component="img"
@@ -140,8 +148,24 @@ export default function Home() {
                     <Button size="small" variant='contained'>View</Button>
                     
                   </CardActions>
-                </Card>
-              </Grid>
+            </Card>*/}
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', boxShadow: '0px 2px 10px rgba(0, 0, 0, 3)', borderRadius: '10px', overflow: 'hidden' }} className="card-container">
+                <CardMedia component="img" style={{ margin: '0px' }} image={item.logo} alt="random" />
+              <CardContent sx={{ flexGrow: 1, padding: '16px' }}>
+                <Typography style={{ color: '#333', fontWeight: 'bold' }} gutterBottom variant="h5" component="h2">
+                  {item.heading}
+                </Typography>
+              <Typography style={{ color: '#666' }}>
+                  {item.description}
+              </Typography>
+            </CardContent>
+        <CardActions sx={{ justifyContent: 'flex-end', padding: '16px' }}>
+          <Link to={`/products/${item.heading}`} style={{ textDecoration: 'none' }}>
+          <Button size="small" variant='contained' sx={{ backgroundColor: '#4CAF50', color: '#FFF', '&:hover': { backgroundColor: '#3E8E41', boxShadow: 'none' } }} on >View</Button>
+          </Link>
+        </CardActions>
+      </Card>
+      </Grid>
             ))}
           </Grid>
         </Container>
@@ -155,7 +179,7 @@ export default function Home() {
           <Grid container spacing={4}>
             {accessories.map((item) => (
               <Grid item key={item} xs={12} sm={6} md={4} style={{marginBottom:"35px"}}>
-                <Card 
+                {/*<Card 
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column'}}
                   
                 >
@@ -178,7 +202,21 @@ export default function Home() {
                     <Button size="small" variant='contained'>View</Button>
                     <Button size="small">Edit</Button>
                   </CardActions>
-                </Card>
+            </Card>*/}
+            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', boxShadow: '0px 2px 10px rgba(0, 0, 0, 3)', borderRadius: '10px', overflow: 'hidden' }} className="card-container">
+  <CardMedia component="img" style={{ margin: '0px' }} image={item.logo} alt="random" />
+  <CardContent sx={{ flexGrow: 1, padding: '16px' }}>
+    <Typography style={{ color: '#333', fontWeight: 'bold' }} gutterBottom variant="h5" component="h2">
+      {item.heading}
+    </Typography>
+    <Typography style={{ color: '#666' }}>
+      {item.description}
+    </Typography>
+  </CardContent>
+  <CardActions sx={{ justifyContent: 'flex-end', padding: '16px' }}>
+    <Button size="small" variant='contained' sx={{ backgroundColor: '#4CAF50', color: '#FFF', '&:hover': { backgroundColor: '#3E8E41', boxShadow: 'none' } }}>View</Button>
+  </CardActions>
+</Card>
               </Grid>
             ))}
           </Grid>
