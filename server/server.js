@@ -175,8 +175,8 @@ app.post('/decode', jwt_mw, (req, res) => {
     //res.send("You are Authorized");
 })
 
-app.get('/products/:email', async (request, response) => {
-  const email = request.params.email;
+app.post('/products', async (request, response) => {
+  const email = request.body.email;
   console.log(email)
   const cartItems = await cart.find({ emails: email }).toArray();
   const productIds = cartItems.map((cartItem) => cartItem.product_id);

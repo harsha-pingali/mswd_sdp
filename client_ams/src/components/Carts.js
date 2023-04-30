@@ -4,24 +4,35 @@ import clutch from './static_content/clutch.jpg';
 import radiator from './static_content/radiator.jpg'
 import suspension from './static_content/suspension.jpg'
 import carburetor from './static_content/carburetor.jpg'
+import { useState ,useEffect} from "react";
 import shock from './static_content/shock.jpg'
 
 // should output an array of product IDs associated with the given email
 function Cart(){
- const getEmailProductIds = async (email) => {
-  try {
-    const response = await axios.get(`http://localhost:6061/products?email=${email}`);
-    return response.data.productIds;
-  } catch (error) {
-    console.error(error);
-  }
-};
+  const [cartItems, setCartItems] = useState([]);
+  //const [avatar, setAvatar] = useState(null);
+//const[commonItems,setCommonItems]=useState([])
 
-const email = localStorage.getItem('user');
-const productIds =  getEmailProductIds(email);
-console.log(productIds);
 
-console.log(productIds); 
+  useEffect(() => {
+    async function getData(email) {
+      //const response = await axios.get('https://api.github.com/users');
+      const response = await axios.post("http://localhost:6061/products",{email:email})
+      setCartItems(response.data);
+      /*if (response.data.length > 0) {
+        setAvatar(response.data[0]);
+      }*/
+     
+    }
+    const email=localStorage.getItem("user")
+    getData(email);
+  },[] );
+
+  console.log(cartItems);
+ 
+
+//const addedItems=new Set();
+
 const accessories=[
   {id:"1",heading:"Exhaust",logo:exhaust,price:"$120",description:"A high-quality exhaust system can improve the performance of your car by increasing horsepower and torque. This is achieved by optimizing the flow of exhaust gases out of the engine and reducing backpressure."},
   {id:"2",heading:"Clutch Kit",logo:clutch,price:"$120",description:"A high-quality clutch kit can improve the performance of your car by providing better traction and faster acceleration. This is achieved by using high-performance friction materials and a stronger pressure plate."},
@@ -32,10 +43,30 @@ const accessories=[
   {id:"7",heading:"AirMatic Shock Absorber",logo:shock,price:"$120",description:"shock absorbers provide a smooth and comfortable ride by automatically adjusting the suspension system based on road conditions and driving style. This can help reduce vibrations and noise, making for a more pleasant driving experience."}
 ]
 
-    return(
-        <div>
-
+return (
+  <>
+    {accessories
+      .filter((product) => {
+        console.log("product:", product);
+        console.log("cartItems:", cartItems);
+        return cartItems.some((item) => item.id === product.id);
+      })
+      .map((product) => (
+        <div key={product.id}>
+          <h2>{product.heading}</h2>
+          <img src={product.logo} alt={product.heading} />
+          <p>{product.price}</p>
+          <p>{product.description}</p>
+          {cartItems.find((item) => item.id === product.id) ? (
+            <button style={{ backgroundColor: "green" }}>Added to cart</button>
+          ) : (
+            <button>Add to cart</button>
+          )}
         </div>
-    )
-}
+      ))}
+  </>
+);
+
+      }
+
 export default Cart;

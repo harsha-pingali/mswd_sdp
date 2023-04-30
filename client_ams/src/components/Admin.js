@@ -76,12 +76,12 @@ function Admin() {
   }
 
   return (
-    <TableRow key={user.id}>
+    <TableRow key={user._id}>
       <TableCell>{user.fname} {user.lname}</TableCell>
       <TableCell>{user.email}</TableCell>
       <TableCell>{user.mobile}</TableCell>
       <TableCell>
-        <Button variant='contained' color='error' onClick={() => deleteUser(user.id)}>Delete User <DeleteIcon/></Button>
+        <Button variant='contained' color='error' onClick={() => deleteUser(user._id)}>Delete User <DeleteIcon/></Button>
       </TableCell>
     </TableRow>
   );

@@ -10,6 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import toast,{Toaster} from 'react-hot-toast'
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -25,6 +26,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+// import { Toaster } from 'react-hot-toast';
 const accessories=[
   {id:"1",heading:"Exhaust",logo:exhaust,price:"$120",description:"A high-quality exhaust system can improve the performance of your car by increasing horsepower and torque. This is achieved by optimizing the flow of exhaust gases out of the engine and reducing backpressure."},
   {id:"2",heading:"Clutch Kit",logo:clutch,price:"$120",description:"A high-quality clutch kit can improve the performance of your car by providing better traction and faster acceleration. This is achieved by using high-performance friction materials and a stronger pressure plate."},
@@ -57,12 +59,13 @@ function handlePayment(){
       await axios.post("http://localhost:6061/cart", { product_id: id,email:mail }).then((res) => {
        addedItems.push(id);
         setAddedToCart(true);
-        alert(id+"Item added to cart");
+        toast.success("Item added to cart")
       });
     }
   }
     return(
         <div>
+          <Toaster position='top-center'></Toaster>
                     <Container  sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>

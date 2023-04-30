@@ -4,6 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import toast,{Toaster} from 'react-hot-toast'
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
@@ -50,25 +51,25 @@ export default function SignInSide() {
     window.addEventListener('popstate', handleBackButton);
 
     return () => {
+
       window.removeEventListener('popstate', handleBackButton);
     };
   }, [navigate]);
-
+  <Toaster position='top-center'></Toaster>
  	async function handleSubmit(event) {
 		event.preventDefault();
-    alert(email);
-
+    
 		const response = await fetch('http://localhost:6061/authenticate', {
-			method: 'POST',
+      method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				email,
+        email,
 				password,
 			}),
 		})
-
+    
 		const data = await response.json()
     console.log(data)
     console.log(data.user)
@@ -76,7 +77,8 @@ export default function SignInSide() {
 			localStorage.setItem('token', data.user)
       localStorage.setItem('user',email)
       console.log(localStorage.getItem('user'))
-			alert('Login successful')
+      toast.success("Form submitted")
+			// alert('Login successful')
       //alert(data.user.name)
 			//window.location.href = '/home'
       //window.history.pushState(null,null,'/home')

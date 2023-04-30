@@ -1,0 +1,42 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [details, setDetails] = useState([]);
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await axios.get('https://api.github.com/users');
+      setDetails(response.data);
+      if (response.data.length > 0) {
+        setAvatar(response.data[0]);
+      }
+    }
+    getData();
+  }, []);
+
+  function handleAvatar(index) {
+    setAvatar(details[index]);
+  }
+
+  return (
+    <div>
+      {avatar && <img src={avatar.avatar_url} alt="Avatar" style={{width:"300px"}} />}
+      {details.length > 0 &&
+        <>
+          <button onClick={() => handleAvatar(0)}>Avatar 1</button>
+          <button onClick={() => handleAvatar(1)}>Avatar 2</button>
+          <button onClick={() => handleAvatar(2)}>Avatar 3</button>
+          <button onClick={() => handleAvatar(3)}>Avatar 4</button>
+          <button onClick={() => handleAvatar(4)}>Avatar 5</button>
+        </>
+      }
+    </div>
+  );
+}
+
+export default App;
+
+
+const response = await axios.post("http://localhost:6061/products",{email:email})
