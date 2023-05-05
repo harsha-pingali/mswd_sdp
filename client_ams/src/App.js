@@ -16,7 +16,9 @@ import MG from './components/MG.js';
 import Bmw from './components/Bmw.js';
 import Volvo from './components/Volvo.js';
 import Cart from './components/Carts.js';
-
+import Carts from './components/Carts.js';
+import PaymentFailure from './components/PaymentFailure.js';
+import PaymentSuccess from './components/PaymentSuccess.js';
 function App() {
   return (
    <div className='App'>
@@ -37,7 +39,9 @@ function App() {
         <Route path='/products/products/MG'  element={<MG/>}/>
         <Route path='products/BMW'  element={<Bmw/>}/>
         <Route path='/products/Volvo'  element={<Volvo/>}/>
-        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/carts' element={<Carts/>}/>
+        <Route path='/success' element={<PaymentSuccess/>}/>
+        <Route path='/failure' element={<PaymentFailure/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

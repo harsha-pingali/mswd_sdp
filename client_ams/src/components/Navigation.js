@@ -58,7 +58,7 @@ function ResponsiveAppBar() {
   }
   
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor:"#263238"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           
@@ -156,14 +156,7 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
-  <Tooltip title="Open cart">
-    <IconButton  style={{marginRight:"20px "}} href='/cart'>
-      <ShoppingCartSharpIcon/>
-    </IconButton>
-  </Tooltip>
-  {/* Add your cart menu code here */}
-</Box>
+          
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

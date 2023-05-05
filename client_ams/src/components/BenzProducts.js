@@ -34,8 +34,10 @@ const accessories=[
   {id:"6",heading:"Break System",logo:exhaust,price:"$120",description:"It's important to choose a brake system that is compatible with your car's make and model, as well as the type of driving you do. For example, a high-performance brake system may not be necessary for everyday driving, while a heavy-duty brake system may be necessary for towing or hauling heavy loads."},
   {id:"7",heading:"AirMatic Shock Absorber",logo:shock,price:"$120",description:"shock absorbers provide a smooth and comfortable ride by automatically adjusting the suspension system based on road conditions and driving style. This can help reduce vibrations and noise, making for a more pleasant driving experience."}
 ]
+
 function Bugati()
 {
+
     const navigate=useNavigate();
      const [showDescription, setShowDescription] = useState(false);
     const [addedToCart, setAddedToCart] = useState(false);
