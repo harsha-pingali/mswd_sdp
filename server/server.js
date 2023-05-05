@@ -3,6 +3,7 @@ const express= require("express");//importing
 const {MongoClient}=require('mongodb')
 const cors=require('cors');
 const app=express();
+
 app.use(cors())
 app.use(express.json())
 const uri= "mongodb+srv://harsha19:harsha123@cluster0.msnedsf.mongodb.net/?retryWrites=true&w=majority"
@@ -19,6 +20,7 @@ const jwt_decode = require('jwt-decode');
 const secretkey="abcd"
 const algorithm ="HS256"
 
+const stripe=require('stripe')('sk_test_51N4JFHSBO9WWFWOthXCTS7Nj0RC1b0QvwV4zS5BDEUQ0CfeR644GLifg7Iz1jmTdEy3eaRxlQl0mF8g4mVQzvuTx00UovcIEyD')
 const jwt_mw=exjwt({
     algorithms:[algorithm],
     secret:secretkey
@@ -182,4 +184,31 @@ app.post('/products', async (request, response) => {
   const productIds = cartItems.map((cartItem) => cartItem.product_id);
   console.log(productIds)
   response.send(productIds);
+});
+
+
+
+app.post('/pay', async (req, res) => {
+  console.log(req.body.total)
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price_data:{
+          currency:'inr',
+          product_data:{
+            name:"exhaust",
+          },
+          unit_amount:(req.body.total)*100,
+        },
+        quantity:1,
+      },
+    ],
+    mode: 'payment',
+    success_url: 'http://localhost:3000/success',
+    cancel_url: 'http://localhost:3000/failure'
+  });
+
+
+   res.json({url: session.url})
 });
