@@ -194,20 +194,26 @@ app.post('/products', async (request, response) => {
 
 app.post('/pay', async (req, res) => {
   console.log(req.body.total)
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    line_items: [
-      {
+  console.log(req.body.cart)
+  const line_items=req.body.cart.map(item=>{
+    return{
         price_data:{
           currency:'inr',
           product_data:{
-            name:"exhaust",
+            name:item.heading,
+            metadata:{
+              id:item.id
+            }
           },
-          unit_amount:(req.body.total)*100,
+          unit_amount:(item.price.slice(1))*100,
         },
-        quantity:1,
-      },
-    ],
+        quantity:item.qty,
+      }
+    
+    })
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items,
     mode: 'payment',
     success_url: 'http://localhost:3000/success',
     cancel_url: 'http://localhost:3000/failure'
