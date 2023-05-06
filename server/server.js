@@ -1,6 +1,6 @@
 const {response, request}=require("express");//importing
 const express= require("express");//importing
-const {MongoClient}=require('mongodb')
+const {MongoClient, ObjectId}=require('mongodb')
 const cors=require('cors');
 const app=express();
 
@@ -16,6 +16,7 @@ const jwt =require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 const{expressjwt:exjwt} = require('express-jwt');
 const jwt_decode = require('jwt-decode');
+const bodyParser=require('body-parser')
 //collect.insertOne({name:"harsha"})
 const secretkey="abcd"
 const algorithm ="HS256"
@@ -27,6 +28,8 @@ const jwt_mw=exjwt({
 });
 
 app.listen( 6061 ,console.log("started at port 6061"));//port connection
+
+app.use(bodyParser.json())
 
 app.post('/reg',(request,response)=>{
     console.log(request.body)
@@ -133,21 +136,22 @@ console.log(req.body)
 })
 
 
-app.post('/deleteuser', async (req, res) => {
+app.post('/deleteusers', async (req, res) => {
   try {
-    const id = req.body.id
+    const id = req.body.id;
     console.log(id)
-    const result = await collect.findByIdAndDelete(id)
+    const result = await collect.deleteOne({_id:new ObjectId(id)})
+    console.log(result)
     if (result === null) {
-      res.status(404).send({ message: 'User not found' })
+      res.status(404).send({ message: 'User not found' });
     } else {
-      res.send({ message: 'User deleted successfully' })
+      res.send({ message: 'User deleted successfully' });
     }
   } catch (error) {
-    console.error(error)
-    res.status(500).send({ message: 'Internal server error' })
+    console.error(error);
+    res.status(500).send({ message: 'Internal server error' });
   }
-})
+});
 
 app.post('/cart', async (request, response) => {
   const { product_id, email } = request.body;

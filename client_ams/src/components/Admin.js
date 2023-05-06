@@ -14,21 +14,11 @@ import { Button } from '@mui/material';
 function Admin() {
   const[users,setUsers]=useState([])
 
-  async function deleteUser(id){
-    alert("deleting user")
-     try {
-      const response = await axios.post('http://localhost:6061/deleteuser/',{id:id});
-      console.log(response.data);
-      // If the deletion is successful, update the users state to remove the deleted user
-      setUsers(users.filter(user => user.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-  }
+
     async function fetchData() {
       try {
-        const response = await axios.post('http://localhost:6061/user', {name: 'harsha'});
-        setUsers(response.data);
+        const response = await axios.post('http://localhost:6061/user');
+        setUsers(response.data.reverse());
         console.log(users)
       } catch (error) {
         console.log(error);
@@ -37,6 +27,23 @@ function Admin() {
     useEffect(()=>{
       fetchData();
     },[]);
+
+const deleteUser = async (id) => {
+    alert(id)
+     const res = await fetch("http://localhost:6061/deleteusers", {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+			}),
+    })
+   /* if(res.data.message==='User deleted successfully'){
+      setUsers(users.filter((user)=>user._id!==id))
+    }*/
+    fetchData()
+  };
 
  /* return (
     
@@ -63,6 +70,7 @@ function Admin() {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell>ID</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Mobile</TableCell>
@@ -77,11 +85,12 @@ function Admin() {
 
   return (
     <TableRow key={user._id}>
+      <TableCell>{user._id}</TableCell>
       <TableCell>{user.fname} {user.lname}</TableCell>
       <TableCell>{user.email}</TableCell>
       <TableCell>{user.mobile}</TableCell>
       <TableCell>
-        <Button variant='contained' color='error' onClick={() => deleteUser(user._id)}>Delete User <DeleteIcon/></Button>
+        <Button variant='contained' color='error' onClick={()=>deleteUser(user._id)}>Delete User <DeleteIcon/></Button>
       </TableCell>
     </TableRow>
   );
