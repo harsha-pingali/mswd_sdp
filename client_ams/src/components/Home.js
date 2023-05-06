@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Footer from './Footer';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../index.css';
@@ -226,20 +227,67 @@ export default function Home() {
 
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
+      <Box sx={{ bgcolor: 'background.paper', p: 6 }} style={{boxShadow: '0px 2px 10px rgba(0, 0, 0, 3)'}} component="footer">
+  <Typography variant="h6" align="center" gutterBottom style={{color:"black",marginTop:"0px"}}>
+    Contact Us
+  </Typography>
+  <div style={{display:"flex",direction:"row"}}>
+  <Typography
+    variant="subtitle1"
+    align="left"
+    color="text.secondary"
+    component="p"
+    style={{display:"flex",direction:"row",marginRight:"200px"}}
+  >
+  <div>
+    <h3 style={{color:"black"}}>Email</h3>
+    <br/>
+    <ul>
+  <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
+  <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
+  <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a> </li>
+</ul>
+</div>
+  </Typography>
+  <Typography
+  variant="subtitle1"
+    align="center"
+    color="text.secondary"
+    component="p"
+    style={{display:"flex",direction:"row",marginRight:"200px"}}
+   >
+       <div>
+    <h3 style={{color:"black"}}>Email</h3>
+    <br/>
+    <ul>
+  <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
+  <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
+  <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a> </li>
+</ul>
+</div>
+
+  </Typography>
+
+  <Typography
+  variant="subtitle1"
+    align="right"
+    color="text.secondary"
+    component="p"
+   >
+       <div>
+    <h3 style={{color:"black"}}>Email</h3>
+    <br/>
+    <ul>
+  <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
+  <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
+  <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a> </li>
+</ul>
+</div>
+
+  </Typography>
+  </div>
+</Box>
+
       {/* End footer */}
       </div>
    
