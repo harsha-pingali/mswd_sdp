@@ -19,6 +19,7 @@ import Cart from './components/Carts.js';
 import Carts from './components/Carts.js';
 import PaymentFailure from './components/PaymentFailure.js';
 import PaymentSuccess from './components/PaymentSuccess.js';
+import AboutUs from './components/AboutUs.js';
 function App() {
   return (
    <div className='App'>
@@ -30,6 +31,7 @@ function App() {
         <Route path='/' element={<Landingpage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/aboutus' element={<AboutUs/>}/>
         <Route element={<PrivateRoutes/>}>
         <Route path='/home'   element={<Home/>}/>
         <Route path='/admin'  element={<Admin/>} />

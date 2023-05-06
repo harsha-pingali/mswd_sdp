@@ -43,10 +43,12 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
+    
   );
 }
 
 
+ 
 
 const brands = [
   { heading: 'Audi', description: 'Checkout most frequently ordered parts of Audi' ,logo:audi},

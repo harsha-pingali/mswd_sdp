@@ -11,12 +11,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+/*import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@mui/material';
 import { Theme } from '@mui/material';
 import { Navigate, useNavigate } from 'react-router-dom';
-import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
-const pages = ['home', 'login', 'signup'];
+import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';*/
+const pages = ['home', 'login', 'signup','About Us'];
 const settings = ['Profile',  'Logout'];
 
 
@@ -150,7 +150,7 @@ function ResponsiveAppBar() {
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 data-arg1={page}
                 id="nav"
-                href={"/"+page.toString()}
+                href={"/"+page.toString().toLowerCase().replace(/\s/g, '')}
               >
                 {page}
               </Button>

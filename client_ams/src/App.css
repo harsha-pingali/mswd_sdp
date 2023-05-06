@@ -104,3 +104,10 @@
   width: 80px;
   height: 100px;
 }
+.my-card
+{
+  transition: transform 0.3s ease-in-out;
+}
+.my-card:hover{
+  transform: scale(1.009);
+}
