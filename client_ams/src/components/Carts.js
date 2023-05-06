@@ -101,7 +101,7 @@ const handleCheckout = async () => {
     <div className='priceContent' style={{ display: 'flex', flexDirection: 'column',paddingTop:"50%" }}>
       <h1 style={{textAlign:"center",fontFamily:"Noto Sans",margin:"10px"}}>Subtotal ({cart.length})  items</h1>
       <h2 style={{fontWeight:"700",fontSize:"28px",fontFamily:"Noto Sans",textAlign:'center'}}>TOTAL : $ {total}</h2>
-      <div style={{display:"flex",direction:"row",justifyContent:"center",paddingTop:"25px"}}><Button variant='contained' color="success" >Proceed To Checkout</Button></div>
+      <div style={{display:"flex",direction:"row",justifyContent:"center",paddingTop:"25px"}}><Button variant='contained' color="success" onClick={handleCheckout}>Proceed To Checkout</Button></div>
     </div>
   </div>
     

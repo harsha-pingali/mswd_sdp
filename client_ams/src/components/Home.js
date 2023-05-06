@@ -32,6 +32,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 //import logo from './static_content/Audi.jpg';
 function Copyright() {
@@ -231,62 +232,51 @@ export default function Home() {
   <Typography variant="h6" align="center" gutterBottom style={{color:"black",marginTop:"0px"}}>
     Contact Us
   </Typography>
-  <div style={{display:"flex",direction:"row"}}>
-  <Typography
-    variant="subtitle1"
-    align="left"
-    color="text.secondary"
-    component="p"
-    style={{display:"flex",direction:"row",marginRight:"200px"}}
-  >
-  <div>
-    <h3 style={{color:"black"}}>Email</h3>
-    <br/>
-    <ul>
-  <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
-  <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
-  <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a> </li>
-</ul>
-</div>
-  </Typography>
-  <Typography
-  variant="subtitle1"
-    align="center"
-    color="text.secondary"
-    component="p"
-    style={{display:"flex",direction:"row",marginRight:"200px"}}
-   >
-       <div>
-    <h3 style={{color:"black"}}>Email</h3>
-    <br/>
-    <ul>
-  <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
-  <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
-  <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a> </li>
-</ul>
-</div>
-
-  </Typography>
-
-  <Typography
-  variant="subtitle1"
-    align="right"
-    color="text.secondary"
-    component="p"
-   >
-       <div>
-    <h3 style={{color:"black"}}>Email</h3>
-    <br/>
-    <ul>
-  <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
-  <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
-  <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a> </li>
-</ul>
+  <div style={{display:"flex", flexDirection: "row"}}>
+    <div style={{flexGrow: 1}}>
+      <Typography variant="subtitle1" color="text.secondary" component="p">
+        <div>
+          <h3 style={{color:"black"}}>Email</h3>
+          <br/>
+          <ul>
+            <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
+            <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
+            <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a></li>
+          </ul>
+        </div>
+      </Typography>
+    </div>
+    <div style={{flexGrow: 1}}>
+    <Typography variant="subtitle1" color="text.secondary" component="p">
+        <div>
+          <h3 style={{color:"black"}}>Email</h3>
+          <br/>
+          <ul>
+            <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
+            <li style={{color:"black"}}><a href='mailto:kishorechaitanya068@gmail.com' style={{color:"black"}}>kishorechaitanya068@gmail.com</a></li>
+            <li style={{color:"black"}}><a href='mailto:2100031115@kluniversity.in' style={{color:"black"}}>2100031115@kluniversity.in</a></li>
+          </ul>
+        </div>
+          </Typography>
+    </div>
+    <div style={{flexGrow: 1}}>
+      <Typography variant="subtitle1" color="text.secondary" component="p">
+        <div>
+  <h3 style={{color:"black"}}>Contact</h3>
+  <br/>
+  <ul>
+    <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
+   
+    <li style={{color:"black"}}><FontAwesomeIcon icon="fa-brands fa-linkedin" /><a href='https://www.instagram.com/king_of_dark018/' target='_blank' rel='noopener noreferrer' style={{color:"black"}}>Instagram(chaitanya)</a></li>
+    <li style={{color:"black"}}><a href='https://www.linkedin.com/in/chaitanya-kishore-6aa93a246/' target='_blank' rel='noopener noreferrer' style={{color:"black"}}>LinkedIn</a></li>
+  </ul>
 </div>
 
-  </Typography>
+      </Typography>
+    </div>
   </div>
 </Box>
+
 
       {/* End footer */}
       </div>
