@@ -20,6 +20,7 @@ import Carts from './components/Carts.js';
 import PaymentFailure from './components/PaymentFailure.js';
 import PaymentSuccess from './components/PaymentSuccess.js';
 import AboutUs from './components/AboutUs.js';
+import Footer from './components/Footer.js';
 function App() {
   return (
    <div className='App'>
@@ -32,6 +33,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/aboutus' element={<AboutUs/>}/>
+        <Route path= '/Footer' element={<Footer/>}/>
         <Route element={<PrivateRoutes/>}>
         <Route path='/home'   element={<Home/>}/>
         <Route path='/admin'  element={<Admin/>} />
