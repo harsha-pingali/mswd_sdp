@@ -40,6 +40,7 @@ const Carts = () => {
  
   },[cart])
   
+  const user_id=localStorage.getItem('user')
 const handleCheckout = async () => {
   const res = await fetch("http://localhost:6061/pay", {
       method: 'POST',
@@ -49,6 +50,7 @@ const handleCheckout = async () => {
       body: JSON.stringify({
         total,
 				cart,
+        user_id,
 			}),
     })
     const resp = await res.json()
@@ -101,14 +103,11 @@ const handleCheckout = async () => {
     <div className='priceContent' style={{ display: 'flex', flexDirection: 'column',paddingTop:"50%" }}>
       <h1 style={{textAlign:"center",fontFamily:"Noto Sans",margin:"10px"}}>Subtotal ({cart.length})  items</h1>
       <h2 style={{fontWeight:"700",fontSize:"28px",fontFamily:"Noto Sans",textAlign:'center'}}>TOTAL : $ {total}</h2>
-<<<<<<< HEAD
       <div style={{display:"flex",direction:"row",justifyContent:"center",paddingTop:"25px"}}><Button variant='contained' color="success" onClick={handleCheckout} >Proceed To Checkout</Button></div>
-=======
-      <div style={{display:"flex",direction:"row",justifyContent:"center",paddingTop:"25px"}}><Button variant='contained' color="success" onClick={handleCheckout}>Proceed To Checkout</Button></div>
->>>>>>> cd931d183f377815715e4bbc18aabc22c5905b22
-    </div>
+    
   </div>
     
+    </div>
     </div>
    
 

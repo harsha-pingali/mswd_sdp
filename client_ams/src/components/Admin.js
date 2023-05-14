@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 
 function Admin() {
@@ -65,7 +65,7 @@ const deleteUser = async (id) => {
   );*/
     return (
     <div>
-      <h1>Hi</h1>
+      <Typography variant='h3' style={{color:"black",textAlign:"center"}}>ADMIN PANNEL</Typography>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

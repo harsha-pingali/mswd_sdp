@@ -31,10 +31,23 @@ app.listen( 6061 ,console.log("started at port 6061"));//port connection
 
 app.use(bodyParser.json())
 
-app.post('/reg',(request,response)=>{
-    console.log(request.body)
-    collect.insertOne(request.body)
-    response.send('pass')
+app.post('/reg',async(request,response)=>{
+    //console.log(request.body)
+    const {email}=request.body;
+  try{
+    const result =await collect.findOne({email})
+    if(result===null){
+       collect.insertOne(request.body)
+      response.send('pass')
+    }
+    else{
+      response.status(404).send({msg:"user already exists"})
+    }
+  }catch(error){
+    console.log(error)
+  }
+  
+   
 })
 
 
@@ -93,7 +106,7 @@ app.post('/reg',(request,response)=>{
 })*/
 
 app.post('/authenticate', async (req, res) => {
-    console.log(req.body.email)
+    //console.log(req.body.email)
 	const user = await collect.findOne({
 		email: req.body.email,
         password:req.body.password
@@ -183,7 +196,7 @@ app.post('/decode', jwt_mw, (req, res) => {
 
 app.post('/products', async (request, response) => {
   const email = request.body.email;
-  console.log(email)
+  //console.log(email)
   const cartItems = await cart.find({ emails: email }).toArray();
   const productIds = cartItems.map((cartItem) => cartItem.product_id);
   console.log(productIds)
@@ -195,6 +208,7 @@ app.post('/products', async (request, response) => {
 app.post('/pay', async (req, res) => {
   console.log(req.body.total)
   console.log(req.body.cart)
+
   const line_items=req.body.cart.map(item=>{
     return{
         price_data:{
@@ -218,7 +232,22 @@ app.post('/pay', async (req, res) => {
     success_url: 'http://localhost:3000/success',
     cancel_url: 'http://localhost:3000/failure'
   });
-
+ 
+  
 
    res.json({url: session.url})
 });
+
+app.post('/fetchprofile',async(request,response)=>{
+  try{
+    const result = await collect.findOne({email:request.body.email});
+    console.log("coming here")
+    console.log(result);
+    response.send(result);
+
+  }catch(error){
+    console.log(error);
+  }
+})
+
+

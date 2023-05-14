@@ -64,7 +64,7 @@ const AboutUs = () => {
         CHAITANYA
       </Typography>
       <Typography style={{ color: 'black', fontFamily: 'Noto Sans', marginBottom: '20px' }} variant="body1">
-      hi i am nayeem is a highly motivated computer science student with a passion for coding and problem-solving.
+      hi i am Chaitanya is a highly motivated computer science student with a passion for coding and problem-solving.
        Currently pursuing a Btech in cse at KL university
       </Typography>
     </Card>

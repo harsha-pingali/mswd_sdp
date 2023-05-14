@@ -9,8 +9,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Profile from './Profile';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Navigate } from 'react-router-dom';
 /*import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@mui/material';
 import { Theme } from '@mui/material';
@@ -53,6 +55,10 @@ function ResponsiveAppBar() {
       localStorage.removeItem("token")
       localStorage.removeItem("user")
       window.location.href='/login'
+     }
+     if(setting=='Profile'){
+       window.location.href='/profile'
+      
      }
 
   }

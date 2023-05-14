@@ -32,7 +32,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 //import logo from './static_content/Audi.jpg';
 function Copyright() {
@@ -100,6 +100,11 @@ export default function Home() {
             pb: 6,
           }}
         >
+            <div style={{display:"flex",direction:"row",justifyContent:"end",color:"black"}}>
+          <Link to='/carts'>
+          <Button variant='filled' style={{backgroundColor:"green",marginRight:"150px",marginTop:"10px"}}>CART   <ShoppingCartIcon style={{backgroundColor:"green",marginLeft:"12px"}} variant="filled" color="success" fontSize='large'/></Button> 
+          </Link>
+          </div>
           <Container maxWidth="sm">
             <Typography
              
@@ -123,6 +128,7 @@ export default function Home() {
               {/*<Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button>*/}
             </Stack>
+          
           </Container>
         </Box>
         <Container  sx={{ py: 8 }} maxWidth="md">
@@ -267,7 +273,7 @@ export default function Home() {
   <ul>
     <li style={{color:"black"}}><a href='mailto:saiharshapingali@gmail.com' style={{color:"black"}}>saiharshapingali@gmail.com</a></li>
    
-    <li style={{color:"black"}}><FontAwesomeIcon icon="fa-brands fa-linkedin" /><a href='https://www.instagram.com/king_of_dark018/' target='_blank' rel='noopener noreferrer' style={{color:"black"}}>Instagram(chaitanya)</a></li>
+    
     <li style={{color:"black"}}><a href='https://www.linkedin.com/in/chaitanya-kishore-6aa93a246/' target='_blank' rel='noopener noreferrer' style={{color:"black"}}>LinkedIn</a></li>
   </ul>
 </div>

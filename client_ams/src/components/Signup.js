@@ -57,23 +57,92 @@ const CssTextField=styled(TextField)({
 export default function SignUp() {
   const navigate=useNavigate();
   const[resp,setResponse]=useState(null)
+  let user='';
   const handleSubmit = (event) => {
     event.preventDefault();
    
      const data = new FormData(event.currentTarget);
-      axios.post("http://localhost:6061/reg",{
-      
-        email: data.get('email'),
-        password: data.get('password'),
-        fname: data.get('fname'),
-        lname: data.get('lname'),
-        mobile:data.get('mobile'),
-        DOB :data.get('dob')
+    const checkEmailValidity=(value)=>{
+      const isNonWhiteSpace = /^\S*$/;
+        if (!isNonWhiteSpace.test(value)) {
+          alert("email should not contain Whitespaces.")
+          return false
+        }
+        const isContainsAt = /^[a-zA-Z0-9]+[a-zA-Z0-9._-]*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
+        if(isContainsAt.test(value)){
+          return true;
+        }
+        else{
+          alert("email must have @")
+        }
 
-    }).then((response)=> {
-      console.log(response.data);
-      setResponse(response.data)
-    });
+    }
+
+    const checkPasswordValidity = (value) => {
+        const isNonWhiteSpace = /^\S*$/;
+        if (!isNonWhiteSpace.test(value)) {
+          alert("Password must not contain Whitespaces.")
+          return false
+        }
+      
+        const isContainsUppercase = /^(?=.*[A-Z]).*$/;
+        if (!isContainsUppercase.test(value)) {
+          alert("Password must have at least one Uppercase Character.")
+          return false
+        }
+      
+        const isContainsLowercase = /^(?=.*[a-z]).*$/;
+        if (!isContainsLowercase.test(value)) {
+          alert("Password must have at least one Lowercase Character.")
+          
+          return false
+        }
+      
+        const isContainsNumber = /^(?=.*[0-9]).*$/;
+        if (!isContainsNumber.test(value)) {
+          alert("Password must contain at least one Digit.");
+      
+          return false
+        }
+      
+        const isContainsSymbol =
+          /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+        if (!isContainsSymbol.test(value)) {
+          alert("Password must contain at least one Special Symbol.");
+          return false
+        }
+      
+        const isValidLength = /^.{10,16}$/;
+        if (!isValidLength.test(value)) {
+          alert("Password must be 10-16 Characters Long.");
+          return false
+        }
+        return true;
+      }
+
+      
+
+      
+
+      if(checkPasswordValidity(data.get('password')) && checkEmailValidity(data.get('email'))){
+        axios.post("http://localhost:6061/reg",{
+        
+          email: data.get('email'),
+          password: data.get('password'),
+          fname: data.get('fname'),
+          lname: data.get('lname'),
+          mobile:data.get('mobile'),
+          DOB :data.get('dob')
+  
+      }).then((response)=> {
+        alert("success")
+        navigate('/login')
+      }).catch(e=>alert("user already exists"));
+      }
+
+      else{
+        console.log("Hi")
+      }
     
   };
 if(resp==null){

@@ -21,6 +21,7 @@ import PaymentFailure from './components/PaymentFailure.js';
 import PaymentSuccess from './components/PaymentSuccess.js';
 import AboutUs from './components/AboutUs.js';
 import Footer from './components/Footer.js';
+import Profile from './components/Profile.js';
 function App() {
   return (
    <div className='App'>
@@ -46,6 +47,7 @@ function App() {
         <Route path='/carts' element={<Carts/>}/>
         <Route path='/success' element={<PaymentSuccess/>}/>
         <Route path='/failure' element={<PaymentFailure/>}/>
+        <Route path='/profile' element={<Profile/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

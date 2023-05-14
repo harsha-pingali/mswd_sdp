@@ -8,7 +8,9 @@ import { Typography } from '@mui/material';
 function Landingpage(){
   const[goToLogin,login]=React.useState(false)
   if(goToLogin){
-    return <Navigate to='/login'/>;
+    if(localStorage.getItem('user'===null))
+      return <Navigate to='/login'/>;
+    return <Navigate to='/home'/>;
   }
 return(
     <div className='landingpage'>
