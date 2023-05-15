@@ -54,10 +54,10 @@ function ResponsiveAppBar() {
      if(setting=="Logout"){
       localStorage.removeItem("token")
       localStorage.removeItem("user")
-      window.location.href='/login'
+      window.location.href='https://klu-scnautomotives.netlify.app/login'
      }
      if(setting=='Profile'){
-       window.location.href='/profile'
+       window.location.href='https://klu-scnautomotives.netlify.app/profile'
       
      }
 
