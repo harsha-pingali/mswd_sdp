@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Profile from './Profile';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Navigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 /*import AdbIcon from '@mui/icons-material/Adb';
 import { makeStyles } from '@mui/material';
 import { Theme } from '@mui/material';
@@ -29,6 +29,7 @@ function ResponsiveAppBar() {
   
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -54,10 +55,10 @@ function ResponsiveAppBar() {
      if(setting=="Logout"){
       localStorage.removeItem("token")
       localStorage.removeItem("user")
-      window.location.href='https://klu-scnautomotives.netlify.app/login'
+      navigate('/login')
      }
      if(setting=='Profile'){
-       window.location.href='https://klu-scnautomotives.netlify.app/profile'
+       navigate('/profile')
       
      }
 
