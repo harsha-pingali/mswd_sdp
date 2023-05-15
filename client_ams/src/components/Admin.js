@@ -17,7 +17,7 @@ function Admin() {
 
     async function fetchData() {
       try {
-        const response = await axios.post('http://localhost:6061/user');
+        const response = await axios.post('https://scn-automotives.onrender.com/user');
         setUsers(response.data.reverse());
         console.log(users)
       } catch (error) {
@@ -30,7 +30,7 @@ function Admin() {
 
 const deleteUser = async (id) => {
     alert(id)
-     const res = await fetch("http://localhost:6061/deleteusers", {
+     const res = await fetch("https://scn-automotives.onrender.com/deleteusers", {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json'

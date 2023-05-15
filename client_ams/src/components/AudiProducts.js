@@ -61,7 +61,7 @@ function handlePayment(){
 
     if (!addedItems.includes(id)) {
         const mail=localStorage.getItem('user')
-      await axios.post("http://localhost:6061/cart", { product_id: id,email:mail }).then((res) => {
+      await axios.post("https://scn-automotives.onrender.com/cart", { product_id: id,email:mail }).then((res) => {
        addedItems.push(id);
         setAddedToCart(true);
         alert(id+"Item added to cart");

@@ -34,7 +34,7 @@ useEffect(()=>{
 },[])
  const handle = ()=>{
     console.log("call")
-    axios.post("http://localhost:6061/fetchprofile",{
+    axios.post("https://scn-automotives.onrender.com/fetchprofile",{
         email:user
     }).then((response)=>{
         setUserData(response.data)

@@ -42,7 +42,7 @@ const Carts = () => {
   
   const user_id=localStorage.getItem('user')
 const handleCheckout = async () => {
-  const res = await fetch("http://localhost:6061/pay", {
+  const res = await fetch("https://scn-automotives.onrender.com/pay", {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json'

@@ -125,7 +125,7 @@ export default function SignUp() {
       
 
       if(checkPasswordValidity(data.get('password')) && checkEmailValidity(data.get('email'))){
-        axios.post("http://localhost:6061/reg",{
+        axios.post("https://scn-automotives.onrender.com/reg",{
         
           email: data.get('email'),
           password: data.get('password'),

@@ -24,7 +24,7 @@ import { useEffect } from 'react';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      <Link color="inherit" href="http://localhost:3000">
+      <Link color="inherit" href="https://klu-scnautomotives.netlify.app/">
         S C N Automotives
       </Link>{}
     </Typography>
@@ -59,7 +59,7 @@ export default function SignInSide() {
  	async function handleSubmit(event) {
 		event.preventDefault();
     
-		const response = await fetch('http://localhost:6061/authenticate', {
+		const response = await fetch('https://scn-automotives.onrender.com/authenticate', {
       method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
